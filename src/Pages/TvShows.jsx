@@ -48,6 +48,9 @@ const TvShows = () => {
     setPage(1);
   };
 
+  console.log(getPopularTvShows);
+  
+
   return tvShows.length > 0 ? (
     <div className="h-screen text-white w-screen">
       <div className="flex items-center px-10 py-3 mb-14 justify-between">
