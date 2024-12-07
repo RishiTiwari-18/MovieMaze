@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Nucida;
+  src: url('./Font/nudica-medium-webfont.woff2');
+}
+
+@font-face {
+    font-family: font;
+    src: url('./Font/ATC.ttf');
+}
+
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #191b21;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2c2e35;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #4A148C ; /* Purple color */
+}
+
+.swiper-pagination-bullet {
+  background-color: #191b21 !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  color: #a5a6ab !important;
+  background-color: #191b2142 !important;
+  padding: 20px !important;
+  scale: .7;
+  border-radius: 10px;
+}
