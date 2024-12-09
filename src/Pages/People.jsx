@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import DropDown from "./Partials/DropDown";
 import TopNav from "./Partials/TopNav";
 import axios from "../Utils/axios";
-import Cards from "./Partials/Cards";
 import { debounce } from "lodash";
 import InfiniteScroll from "react-infinite-scroll-component";
 
