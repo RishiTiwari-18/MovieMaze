@@ -50,6 +50,7 @@ const TopNav = () => {
         <div className="absolute z-20 flex bg-[#191b21] top-nav-component overflow-y-auto text-white flex-col gap-1 rounded-md max-h-[50vh] top-[9vh] left-16 w-[40vw]">
           {searches.map((item, index) => (
             <Link
+              to={`/${item.media_type}/details/${item.id}`}
               key={index}
               className=" flex gap-8 items-center bg-[#1e2025] px-3 py-3 rounded-md"
             >

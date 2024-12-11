@@ -11,49 +11,57 @@ const LazyHorizontalCards = React.lazy(() =>
 const Home = () => {
   document.title = "MovieMaze |  HomePage";
   const generData = [
-    { title: "Latest Releases", apiEndpoint: "/movie/now_playing" },
-    { title: "Action Movies", apiEndpoint: "/discover/movie?with_genres=28" },
+    { title: "Latest Releases", apiEndpoint: "/movie/now_playing", mediaType: "movie" },
+    { title: "Action Movies", apiEndpoint: "/discover/movie?with_genres=28", mediaType: "movie" },
     {
       title: "Adventure Movies",
       apiEndpoint: "/discover/movie?with_genres=12",
+      mediaType: "movie",
     },
     {
       title: "Animation Movies",
       apiEndpoint: "/discover/movie?with_genres=16",
+      mediaType: "movie",
     },
-    { title: "Comedy Movies", apiEndpoint: "/discover/movie?with_genres=35" },
-    { title: "Crime Movies", apiEndpoint: "/discover/movie?with_genres=80" },
-    { title: "Documentary", apiEndpoint: "/discover/movie?with_genres=99" },
-    { title: "Drama TV Shows", apiEndpoint: "/discover/tv?with_genres=18" },
-    { title: "Fantasy Movies", apiEndpoint: "/discover/movie?with_genres=14" },
-    { title: "Horror Movies", apiEndpoint: "/discover/movie?with_genres=27" },
+    { title: "Comedy Movies", apiEndpoint: "/discover/movie?with_genres=35", mediaType: "movie" },
+    { title: "Crime Movies", apiEndpoint: "/discover/movie?with_genres=80", mediaType: "movie" },
+    { title: "Documentary", apiEndpoint: "/discover/movie?with_genres=99", mediaType: "movie" },
+    { title: "Drama TV Shows", apiEndpoint: "/discover/tv?with_genres=18", mediaType: "tv" },
+    { title: "Fantasy Movies", apiEndpoint: "/discover/movie?with_genres=14", mediaType: "movie" },
+    { title: "Horror Movies", apiEndpoint: "/discover/movie?with_genres=27", mediaType: "movie" },
     {
       title: "Romantic Movies",
       apiEndpoint: "/discover/movie?with_genres=10749",
+      mediaType: "movie",
     },
     {
       title: "Science Fiction Movies",
       apiEndpoint: "/discover/movie?with_genres=878",
+      mediaType: "movie",
     },
     {
       title: "Kids' Cartoons (Family Movies)",
       apiEndpoint: "/discover/movie?with_genres=10751",
+      mediaType: "movie",
     },
-    { title: "Mystery TV Shows", apiEndpoint: "/discover/tv?with_genres=9648" },
+    { title: "Mystery TV Shows", apiEndpoint: "/discover/tv?with_genres=9648", mediaType: "tv" },
     {
       title: "Reality TV Shows",
       apiEndpoint: "/discover/tv?with_genres=10764",
+      mediaType: "tv",
     },
     {
       title: "Sci-Fi & Fantasy TV Shows",
       apiEndpoint: "/discover/tv?with_genres=10765",
+      mediaType: "tv",
     },
     {
       title: "Anime TV Shows",
       apiEndpoint: "/discover/tv?with_genres=16&with_keywords=210024",
+      mediaType: "tv",
     },
-    { title: "Thriller Movies", apiEndpoint: "/discover/movie?with_genres=53" },
-    { title: "History Movies", apiEndpoint: "/discover/movie?with_genres=36" },
+    { title: "Thriller Movies", apiEndpoint: "/discover/movie?with_genres=53", mediaType: "movie" },
+    { title: "History Movies", apiEndpoint: "/discover/movie?with_genres=36", mediaType: "movie" },
   ];
 
   const [wallpaper, setWallpaper] = useState([]);
@@ -85,11 +93,12 @@ const Home = () => {
         </div>
         <Header wallpaper={memoizedWallpaper} />
         <Suspense fallback={<div>Loading...</div>}>
-          {generData.map(({ title, apiEndpoint }, index) => (
+          {generData.map(({ title, apiEndpoint, mediaType }, index) => (
             <LazyHorizontalCards
               key={index}
               title={title}
               apiEndpoint={apiEndpoint}
+              mediaType={mediaType}
             />
           ))}
         </Suspense>

@@ -12,8 +12,8 @@ const SideNav = () => {
   const links = [
     { name: 'Trending', path: '/trending', icon: <BsFire/> },
     { name: 'Popular', path: '/popular', icon: <FaStar /> },
-    { name: 'Movies', path: '/movies', icon: <FaFilm /> },
-    { name: 'Tv Shows', path: '/tv-shows', icon: <FaTv /> },
+    { name: 'Movies', path: '/movie', icon: <FaFilm /> },
+    { name: 'Tv Shows', path: '/tv', icon: <FaTv /> },
     { name: 'Peoples', path: '/peoples', icon: <IoPeopleSharp /> },
     { name: 'About', path: '/about', icon: < PiInfoFill/> },
     { name: 'Contact', path: '/contact', icon: <IoCall /> }

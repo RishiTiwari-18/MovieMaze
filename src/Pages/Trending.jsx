@@ -75,7 +75,7 @@ const Trending = () => {
         next={() => setPage((prev) => prev + 1)}
         loader={<h1 className='text-2xl ml-32'>Loading...</h1>}
       >
-        <Cards data={memoizedTrending} />
+        <Cards data={memoizedTrending} title={category} />
       </InfiniteScroll>
     </div>
   );

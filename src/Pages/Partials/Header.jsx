@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Header = ({ wallpaper }) => {
   if (!wallpaper) return <div className=" text-white">Loading</div>;
@@ -47,6 +48,7 @@ const Header = ({ wallpaper }) => {
               <p className=" w-[45%] font-normal text-white font-sans mt-3">
                 {item.overview}
               </p>
+              <Link className="text-black bg-[#ffffffc6] w-fit px-3 py-1.5 rounded-md mt-4" to={`/${item.media_type}/details/${item.id}` }>Watch Now</Link>
             </div>
             <img
               className="w-full h-full object-cover object-top"
