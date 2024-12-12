@@ -10,7 +10,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Trending = () => {
   document.title = "MovieMaze |  Trending"
-  const [category, setCategory] = useState('all');
+  const [category, setCategory] = useState('movie');
   const [duration, setDuration] = useState('day');
   const [trending, setTrending] = useState([]);
   const [error, setError] = useState(null);
@@ -63,7 +63,7 @@ const Trending = () => {
         </Link>
         <TopNav />
         <div className="flex items-center gap-2">
-          <DropDown title="Category" options={['tv', 'movie', 'all']} onChange={handleCategoryChange} />
+          <DropDown title="Category" options={['tv', 'movie']} onChange={handleCategoryChange} />
           <DropDown title="Time" options={['day', 'week']} onChange={handleDurationChange} />
         </div>
       </div>

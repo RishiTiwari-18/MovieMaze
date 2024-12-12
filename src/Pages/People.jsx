@@ -6,6 +6,7 @@ import TopNav from "./Partials/TopNav";
 import axios from "../Utils/axios";
 import { debounce } from "lodash";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./Partials/Loading";
 
 const People = () => {
   document.title = "MovieMaze | People";
@@ -49,6 +50,7 @@ const People = () => {
     setPage(1);
   };
 
+  
   return people.length > 0 ? (
     <div className="h-screen text-white w-screen">
       <div className="flex items-center px-10 py-3 mb-14 justify-between">
@@ -109,7 +111,7 @@ const People = () => {
       </InfiniteScroll>
     </div>
   ) : (
-    <div>Loading...</div>
+    <Loading/>
   );
 };
 

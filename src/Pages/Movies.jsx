@@ -7,6 +7,7 @@ import axios from '../Utils/axios';
 import Cards from './Partials/Cards';
 import { debounce } from 'lodash';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Loading from './Partials/Loading';
 
 const Movies = () => {
   document.title = 'MovieMaze | Movies';
@@ -72,7 +73,7 @@ const Movies = () => {
       </InfiniteScroll>
     </div>
   ) : (
-    <div>Loading...</div>
+    <Loading/>
   );
 };
 

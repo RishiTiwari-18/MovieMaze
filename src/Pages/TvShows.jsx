@@ -48,7 +48,6 @@ const TvShows = () => {
     setPage(1);
   };
 
-  console.log(getPopularTvShows);
   
 
   return tvShows.length > 0 ? (

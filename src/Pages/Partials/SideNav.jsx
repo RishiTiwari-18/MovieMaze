@@ -15,15 +15,13 @@ const SideNav = () => {
     { name: 'Movies', path: '/movie', icon: <FaFilm /> },
     { name: 'Tv Shows', path: '/tv', icon: <FaTv /> },
     { name: 'Peoples', path: '/peoples', icon: <IoPeopleSharp /> },
-    { name: 'About', path: '/about', icon: < PiInfoFill/> },
-    { name: 'Contact', path: '/contact', icon: <IoCall /> }
   ];
 
   return (
     <aside
     onMouseEnter={() => setOnHover(true)}
     onMouseLeave={() => setOnHover(false)}
-    className={`h-full text-white px-3 py-6 transition-shadow z-50 duration-300 ${onHover ? "shadow-[50px_0_60px_rgba(0.4,0.4,0.6,0.6)]" : ""}`}>
+    className={`h-full text-white px-3 py-6 transition-shadow z-50 duration-300 ${onHover ? "shadow-[35px_0_70px_rgba(1,1,1,1)]" : ""}`}>
         <h1 className='flex font-[font] relative tracking-tight text-lg items-center'>
         <SiMediafire className='text-primary tracking-tighter text-4xl'/>
         <span className={`absolute w-20 z-50 ease-linear duration-200 ${onHover ? "left-[125%] opacity-100" : "left-[0%] opacity-0"}`}>MovieMaze</span>

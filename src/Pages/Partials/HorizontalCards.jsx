@@ -20,7 +20,6 @@ const HorizontalCards = React.memo(({ apiEndpoint, title, mediaType }) => {
     getLatestMovie();
   }, [getLatestMovie]);
 
-  console.log(latestMovie);
 
   return (
     <div className="w-full text-white mb-8 h-[50vh]">

@@ -21,6 +21,8 @@ const TopNav = () => {
     getSearch();
   }, [query]);
 
+  
+
   return (
     <>
       <div
@@ -58,7 +60,7 @@ const TopNav = () => {
                 <img
                   className="h-20 w-20 object-cover"
                   src={`https://image.tmdb.org/t/p/w500${
-                    item.poster_path || item.backdrop_path
+                    item.poster_path || item.backdrop_path || item.profile_path || item.known_for[0].backdrop_path_path
                   }`}
                   alt={
                     item.original_title ||
