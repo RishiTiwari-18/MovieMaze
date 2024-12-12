@@ -49,7 +49,6 @@ const TvDetails = () => {
   }
 
   const { detail, externalid, videos, watchProviders, recommendations } = info;
-console.log(info);
   
 
   return (
@@ -142,7 +141,7 @@ console.log(info);
             </div>
 
             <h2 className="text-lg mb-2 mt-6">Seasons</h2>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center flex-wrap gap-3">
               {detail.seasons.map((item, index) => (
                 <h3
                   key={index}
@@ -152,11 +151,12 @@ console.log(info);
                 </h3>
               ))}
             </div>
-
-            <h2 className="text-lg mb-1 mt-6">Plot</h2>
-            <p className="flex items-center text-sm font-sans gap-3">
-              {detail.overview}
-            </p>
+            {info.detail.overview == " " && (
+                <>
+                  <h2 className="text-lg mb-2 mt-6">Plot</h2>
+                  <p className="text-sm">{info.detail.overview}</p>
+                </>
+              )}
 
             {watchProviders && (
               <>

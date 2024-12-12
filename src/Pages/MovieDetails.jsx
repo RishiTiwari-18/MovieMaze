@@ -29,25 +29,19 @@ const MovieDetails = () => {
     return <Loading />;
   }
 
-  const renderProviderIcon = (providerName) => {
-    switch (providerName) {
-      case "Apple TV":
-        return <SiAppletv className="text-2xl" />;
-      case "Google Play Movies":
-        return <FaGooglePlay className="text-2xl" />;
-      case "YouTube":
-        return <FaYoutube className="text-2xl" />;
-      case "Amazon Video":
-      case "Amazon Prime Video":
-        return <SiPrime className="text-2xl" />;
-      case "Netflix":
-        return <SiNetflix className="text-2xl" />;
-      case "Hotstar":
-        return <TbBrandDisney className="text-2xl" />;
-      default:
-        return null;
-    }
+  const ProviderIcon = ({ providerName }) => {
+    const icons = {
+      "Apple TV": <SiAppletv className="text-2xl" />,
+      "Google Play Movies": <FaGooglePlay className="text-2xl" />,
+      "YouTube": <FaYoutube className="text-2xl" />,
+      "Amazon Video": <SiPrime className="text-2xl" />,
+      "Amazon Prime Video": <SiPrime className="text-2xl" />,
+      "Netflix": <SiNetflix className="text-2xl" />,
+      "Hotstar": <TbBrandDisney className="text-2xl" />,
+    };
+    return icons[providerName] || null;
   };
+  
 
   return (
     <div
@@ -115,19 +109,34 @@ const MovieDetails = () => {
               ))}
             </div>
 
-            <h2 className="text-lg mb-1 mt-6">Plot</h2>
-            <p className="flex items-center text-sm font-sans gap-3">{info.detail.overview}</p>
+
+              {info.detail.overview == " " && (
+                <>
+                  <h2 className="text-lg mb-2 mt-6">Plot</h2>
+                  <p className="text-sm">{info.detail.overview}</p>
+                </>
+              )}
+
 
             {info.watchProviders && (
               <>
                 {["buy", "rent", "flatrate"].map((type) => (
                   info.watchProviders[type] && (
                     <div key={type}>
-                      <h2 className="text-lg mb-2 mt-6">{type.charAt(0).toUpperCase() + type.slice(1)  == "Flatrate" &&  "Stream"}</h2>
+                      <h2 className="text-lg mb-2 mt-6">{(type.charAt(0).toUpperCase() + type.slice(1)) === "Flatrate" ? "Stream" : type.charAt(0).toUpperCase() + type.slice(1)}</h2>
                       <div className="flex items-center gap-3">
                         {info.watchProviders[type].map((item, index) => (
-                          <div key={index} className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1">
-                            {renderProviderIcon(item.provider_name)}
+                          <div
+                            key={index}
+                            className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1"
+                          >
+                            {ProviderIcon({ providerName: item.provider_name }) || (
+                              <img
+                                className="h-6 w-6 object-contain"
+                                src={`https://image.tmdb.org/t/p/original${item.logo_path}`}
+                                alt={item.provider_name}
+                              />
+                            )}
                           </div>
                         ))}
                       </div>
