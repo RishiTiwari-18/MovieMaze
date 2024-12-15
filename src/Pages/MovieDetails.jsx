@@ -41,6 +41,7 @@ const MovieDetails = () => {
     };
     return icons[providerName] || null;
   };
+
   
 
   return (
@@ -71,7 +72,7 @@ const MovieDetails = () => {
           <div className="py-2 text-zinc-300 flex items-center justify-between">
             <div className="flex gap-4">
               <h3 className="text-xs font-sans">{info.detail.release_date.split("-")[0]}</h3>
-              <h3 className="text-xs font-sans">{info.detail.runtime} min</h3>
+              <h3 className="text-xs font-sans  ">{info.detail.runtime} min</h3>
             </div>
             <div className="flex gap-3">
               <h3 className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1">
@@ -110,10 +111,10 @@ const MovieDetails = () => {
             </div>
 
 
-              {info.detail.overview == " " && (
+              {info.detail.overview.length > 0  && (
                 <>
                   <h2 className="text-lg mb-2 mt-6">Plot</h2>
-                  <p className="text-sm">{info.detail.overview}</p>
+                  <p className="text-sm font-sans">{info.detail.overview}</p>
                 </>
               )}
 

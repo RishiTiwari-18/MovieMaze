@@ -14,7 +14,7 @@ const SideNav = () => {
     { name: 'Popular', path: '/popular', icon: <FaStar /> },
     { name: 'Movies', path: '/movie', icon: <FaFilm /> },
     { name: 'Tv Shows', path: '/tv', icon: <FaTv /> },
-    { name: 'Peoples', path: '/peoples', icon: <IoPeopleSharp /> },
+    { name: 'Peoples', path: '/people', icon: <IoPeopleSharp /> },
   ];
 
   return (

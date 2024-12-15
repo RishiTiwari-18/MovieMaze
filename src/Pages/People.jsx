@@ -50,6 +50,8 @@ const People = () => {
     setPage(1);
   };
 
+  console.log(people);
+  
   
   return people.length > 0 ? (
     <div className="h-screen text-white w-screen">
@@ -83,10 +85,12 @@ const People = () => {
                 profile_path,
                 name,
                 original_name,
+                id,
               },
               index
             ) => (
               <Link
+                to={`/person/details/${id}`}
                 key={index}
                 className="h-[350px] p-2 w-56 flex-shrink-0 overflow-hidden rounded-md"
               >

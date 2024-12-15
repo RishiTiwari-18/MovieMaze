@@ -91,7 +91,8 @@ const TvDetails = () => {
               <h3 className="text-xs font-sans">{detail.first_air_date.split("-")[0]}</h3>
               <h3 className="text-xs font-sans">-{detail.last_air_date.split("-")[0]}</h3>
               <h3 className="text-xs font-sans ml-4">{detail.number_of_seasons} seasons</h3>
-              <h3 className="text-xs font-sans ml-4">{detail.episode_run_time[0]} min</h3>
+              {detail.episode_run_time.length > 0 && <h3 className="text-xs font-sans ml-4">{detail.episode_run_time[0]} min</h3> }
+              
             </div>
             <div className="flex gap-3">
               <h3 className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1">
@@ -151,10 +152,10 @@ const TvDetails = () => {
                 </h3>
               ))}
             </div>
-            {info.detail.overview == " " && (
+            {info.detail.overview.length > 0  && (
                 <>
                   <h2 className="text-lg mb-2 mt-6">Plot</h2>
-                  <p className="text-sm">{info.detail.overview}</p>
+                  <p className="text-sm font-sans">{info.detail.overview}</p>
                 </>
               )}
 
@@ -192,15 +193,11 @@ const TvDetails = () => {
               </div>
 
               <Swiper spaceBetween={10} slidesPerView={5.5}>
-                {recommendations.map((item, index) => (
+                {(info.recommendations.length > 0 ? info.recommendations : info.similar).map((item, index) => (
                   <SwiperSlide key={index}>
                     <Link to={`/tv/details/${item.id}`}>
                       <div className="h-72 w-52 flex-shrink-0 overflow-hidden rounded-md bg-red-50">
-                        <img
-                          className="h-full hover:scale-105 ease-linear duration-200 w-full object-cover"
-                          src={`https://image.tmdb.org/t/p/original${item.poster_path || item.backdrop_path}`}
-                          alt=""
-                        />
+                        <img className="h-full hover:scale-105 ease-linear duration-200 w-full object-cover" loading="lazy" src={`https://image.tmdb.org/t/p/original${item.poster_path || item.backdrop_path}`} />
                       </div>
                     </Link>
                   </SwiperSlide>
