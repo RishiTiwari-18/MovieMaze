@@ -136,6 +136,7 @@ const MovieDetails = () => {
                                 className="h-6 w-6 object-contain"
                                 src={`https://image.tmdb.org/t/p/original${item.logo_path}`}
                                 alt={item.provider_name}
+                                loading="lazy"
                               />
                             )}
                           </div>

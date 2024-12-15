@@ -135,6 +135,7 @@ const PeopleDetail = React.memo(() => {
                         className=" rounded-lg"
                         src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                         alt=""
+                        loading="lazy"
                       />
                       <div className="flex items-center justify-between pt-5  gap-3">
                         <span
@@ -167,6 +168,7 @@ const PeopleDetail = React.memo(() => {
                         className=" rounded-lg"
                         src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                         alt=""
+                        loading="lazy"
                       />
                       <div className="flex items-center justify-between pt-5  gap-3">
                         <span

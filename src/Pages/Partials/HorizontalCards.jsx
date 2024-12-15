@@ -41,6 +41,7 @@ const HorizontalCards = React.memo(({ apiEndpoint, title, mediaType }) => {
                   src={`https://image.tmdb.org/t/p/original${
                     item.poster_path || item.backdrop_path
                   }`}
+                  loading="lazy"
                 />
               </div>
             </Link>

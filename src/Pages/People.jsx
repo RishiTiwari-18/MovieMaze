@@ -100,6 +100,7 @@ const People = () => {
                     src={`https://image.tmdb.org/t/p/original${
                       poster_path || profile_path
                     }`}
+                    loading="lazy"
                   />
                 </div>
 
