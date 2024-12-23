@@ -33,16 +33,14 @@ const MovieDetails = () => {
     const icons = {
       "Apple TV": <SiAppletv className="text-2xl" />,
       "Google Play Movies": <FaGooglePlay className="text-2xl" />,
-      "YouTube": <FaYoutube className="text-2xl" />,
+      YouTube: <FaYoutube className="text-2xl" />,
       "Amazon Video": <SiPrime className="text-2xl" />,
       "Amazon Prime Video": <SiPrime className="text-2xl" />,
-      "Netflix": <SiNetflix className="text-2xl" />,
-      "Hotstar": <TbBrandDisney className="text-2xl" />,
+      Netflix: <SiNetflix className="text-2xl" />,
+      Hotstar: <TbBrandDisney className="text-2xl" />,
     };
     return icons[providerName] || null;
   };
-
-  
 
   return (
     <div
@@ -51,15 +49,27 @@ const MovieDetails = () => {
       }}
       className="h-fit w-full"
     >
-      <div className="text-white bg-[#0000007f] pb-[5vw] w-full" style={{ backdropFilter: "blur(20px)" }}>
+      <div
+        className="text-white bg-[#0000007f] pb-[5vw] w-full"
+        style={{ backdropFilter: "blur(20px)" }}
+      >
         <nav className="py-6 px-8 items-center flex gap-6">
-          <div onClick={() => navigate(-1)} className="p-1 mr-8 text-xl bg-[#ffffff29] rounded-full hover:scale-95 hover:text-zinc-300 w-fit">
+          <div
+            onClick={() => navigate(-1)}
+            className="p-1 mr-8 text-xl bg-[#ffffff29] rounded-full hover:scale-95 hover:text-zinc-300 w-fit"
+          >
             <IoMdArrowRoundBack />
           </div>
-          <a target="_blank" href={`https://www.imdb.com/title/${info.externalid.imdb_id}/`}>
+          <a
+            target="_blank"
+            href={`https://www.imdb.com/title/${info.externalid.imdb_id}/`}
+          >
             <LiaImdb className="text-2xl hover:text-zinc-300" />
           </a>
-          <a target="_blank" href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}>
+          <a
+            target="_blank"
+            href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
+          >
             <FaWikipediaW className="text-xl hover:text-zinc-300" />
           </a>
           <a target="_blank" href={info.detail.homepage}>
@@ -68,10 +78,14 @@ const MovieDetails = () => {
         </nav>
 
         <div className="px-[10vw] pt-4">
-          <h1 className="text-2xl text-white mb-2">{info.detail.title || info.detail.original_title}</h1>
+          <h1 className="text-2xl text-white mb-2">
+            {info.detail.title || info.detail.original_title}
+          </h1>
           <div className="py-2 text-zinc-300 flex items-center justify-between">
             <div className="flex gap-4">
-              <h3 className="text-xs font-sans">{info.detail.release_date.split("-")[0]}</h3>
+              <h3 className="text-xs font-sans">
+                {info.detail.release_date.split("-")[0]}
+              </h3>
               <h3 className="text-xs font-sans  ">{info.detail.runtime} min</h3>
             </div>
             <div className="flex gap-3">
@@ -83,7 +97,11 @@ const MovieDetails = () => {
           </div>
           <div className="flex gap-6 mt-2">
             <div className="h-[28vw] w-[25%] overflow-hidden rounded-lg">
-              <img className="h-full w-full object-cover" src={`https://image.tmdb.org/t/p/original${info.detail.poster_path}`} alt="" />
+              <img
+                className="h-full w-full object-cover"
+                src={`https://image.tmdb.org/t/p/original${info.detail.poster_path}`}
+                alt=""
+              />
             </div>
             <div className="h-[28vw] w-[75%] overflow-hidden rounded-lg">
               {info.videos ? (
@@ -95,7 +113,11 @@ const MovieDetails = () => {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <img className="h-full w-full object-cover" src={`https://image.tmdb.org/t/p/original${info.detail.backdrop_path}`} alt="" />
+                <img
+                  className="h-full w-full object-cover"
+                  src={`https://image.tmdb.org/t/p/original${info.detail.backdrop_path}`}
+                  alt=""
+                />
               )}
             </div>
           </div>
@@ -104,47 +126,56 @@ const MovieDetails = () => {
             <h2 className="text-lg mb-2">Genre</h2>
             <div className="flex items-center gap-3">
               {info.detail.genres.map((item, index) => (
-                <h3 key={index} className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1">
+                <h3
+                  key={index}
+                  className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1"
+                >
                   {item.name}
                 </h3>
               ))}
             </div>
 
-
-              {info.detail.overview.length > 0  && (
-                <>
-                  <h2 className="text-lg mb-2 mt-6">Plot</h2>
-                  <p className="text-sm font-sans">{info.detail.overview}</p>
-                </>
-              )}
-
+            {info.detail.overview.length > 0 && (
+              <>
+                <h2 className="text-lg mb-2 mt-6">Plot</h2>
+                <p className="text-sm font-sans">{info.detail.overview}</p>
+              </>
+            )}
 
             {info.watchProviders && (
               <>
-                {["buy", "rent", "flatrate"].map((type) => (
-                  info.watchProviders[type] && (
-                    <div key={type}>
-                      <h2 className="text-lg mb-2 mt-6">{(type.charAt(0).toUpperCase() + type.slice(1)) === "Flatrate" ? "Stream" : type.charAt(0).toUpperCase() + type.slice(1)}</h2>
-                      <div className="flex items-center gap-3">
-                        {info.watchProviders[type].map((item, index) => (
-                          <div
-                            key={index}
-                            className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1"
-                          >
-                            {ProviderIcon({ providerName: item.provider_name }) || (
-                              <img
-                                className="h-6 w-6 object-contain"
-                                src={`https://image.tmdb.org/t/p/original${item.logo_path}`}
-                                alt={item.provider_name}
-                                loading="lazy"
-                              />
-                            )}
-                          </div>
-                        ))}
+                {["buy", "rent", "flatrate"].map(
+                  (type) =>
+                    info.watchProviders[type] && (
+                      <div key={type}>
+                        <h2 className="text-lg mb-2 mt-6">
+                          {type.charAt(0).toUpperCase() + type.slice(1) ===
+                          "Flatrate"
+                            ? "Stream"
+                            : type.charAt(0).toUpperCase() + type.slice(1)}
+                        </h2>
+                        <div className="flex items-center gap-3">
+                          {info.watchProviders[type].map((item, index) => (
+                            <div
+                              key={index}
+                              className="text-xs font-sans flex items-center gap-1.5 bg-[#ffffff49] px-2.5 rounded-md text-white py-1"
+                            >
+                              {ProviderIcon({
+                                providerName: item.provider_name,
+                              }) || (
+                                <img
+                                  className="h-6 w-6 object-contain"
+                                  src={`https://image.tmdb.org/t/p/original${item.logo_path}`}
+                                  alt={item.provider_name}
+                                  loading="lazy"
+                                />
+                              )}
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )
-                ))}
+                    )
+                )}
               </>
             )}
 
@@ -153,12 +184,31 @@ const MovieDetails = () => {
                 <h1 className="text-xl py-6 mt-6">Recommendations</h1>
               </div>
 
-              <Swiper spaceBetween={10} slidesPerView={5.5}>
-                {(info.recommendations.length > 0 ? info.recommendations : info.similar).map((item, index) => (
+              <Swiper
+                spaceBetween={10}
+                breakpoints={{
+                  1500: { slidesPerView: 5.5 },
+                  1400: { slidesPerView: 5.2 },
+                  1300: { slidesPerView: 4.8 },
+                  1200: { slidesPerView: 4.4 },
+                  1100: { slidesPerView: 4 },
+                  1000: { slidesPerView: 3.6 },
+                }}
+              >
+                {(info.recommendations.length > 0
+                  ? info.recommendations
+                  : info.similar
+                ).map((item, index) => (
                   <SwiperSlide key={index}>
                     <Link to={`/movie/details/${item.id}`}>
                       <div className="h-72 w-52 flex-shrink-0 overflow-hidden rounded-md bg-red-50">
-                        <img className="h-full hover:scale-105 ease-linear duration-200 w-full object-cover" loading="lazy" src={`https://image.tmdb.org/t/p/original${item.poster_path || item.backdrop_path}`} />
+                        <img
+                          className="h-full hover:scale-105 ease-linear duration-200 w-full object-cover"
+                          loading="lazy"
+                          src={`https://image.tmdb.org/t/p/original${
+                            item.poster_path || item.backdrop_path
+                          }`}
+                        />
                       </div>
                     </Link>
                   </SwiperSlide>

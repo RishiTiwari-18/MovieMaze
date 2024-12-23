@@ -77,7 +77,7 @@ const People = () => {
         next={() => setPage((prev) => prev + 1)}
         loader={<h1 className="text-2xl ml-32">Loading...</h1>}
       >
-        <div className=" w-full  px-[8vw] py-3 grid grid-cols-5 bg-secondary gap-y-10">
+        <div className=" w-full  px-[8vw] py-3 grid max-xl:grid-cols-4 grid-cols-5 bg-secondary gap-y-10">
           {memoizedPeople.map(
             (
               {

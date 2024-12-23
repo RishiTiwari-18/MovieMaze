@@ -34,7 +34,7 @@ const Cards = memo(({ data, title }) => {
   );
 
   return (
-    <div className="w-full px-[8vw] py-3 grid grid-cols-5 bg-secondary gap-y-10">
+    <div className="w-full px-[8vw] py-3 grid max-xl:grid-cols-4 grid-cols-5 bg-secondary gap-y-10">
       {data.map(renderCard)}
     </div>
   );

@@ -60,7 +60,7 @@ const PeopleDetail = React.memo(() => {
               <BsInstagram className="text-lg hover:text-zinc-300" />
             </a>
           )}
-          
+
           {info.externalid.facebook_id && (
             <a
               target="_blank"
@@ -96,7 +96,9 @@ const PeopleDetail = React.memo(() => {
               <h3 className="text-xs font-sans">
                 {info.detail.known_for_department}
               </h3>
-              <h3 className="text-xs font-sans">{info.detail.gender === 2 ? "Male" : "Female"}</h3>
+              <h3 className="text-xs font-sans">
+                {info.detail.gender === 2 ? "Male" : "Female"}
+              </h3>
               <h3 className="text-xs font-sans">{info.detail.birthday}</h3>
             </div>
             <div className="flex gap-3">
@@ -114,87 +116,110 @@ const PeopleDetail = React.memo(() => {
                 alt=""
               />
             </div>
-                <div className="h-[24.8vw] w-[72%]">
-                <h3 className="text-xl mb-5">Biography</h3>
-            <div className=" h-full w-full pr-6 overflow-y-auto">
-                <p className="font-sans" >{info.detail.biography}</p>
+            <div className="h-[24.8vw] w-[72%]">
+              <h3 className="text-xl mb-5">Biography</h3>
+              <div className=" h-full w-full pr-6 overflow-y-auto">
+                <p className="font-sans">{info.detail.biography}</p>
+              </div>
             </div>
-                </div>
           </div>
 
-         <div className="mt-20">
-          <h1 className="text-xl text-white mb-2" >Known for</h1>
+          <div className="mt-20">
+            <h1 className="text-xl text-white mb-2">Known for</h1>
 
-         <Swiper spaceBetween={20} slidesPerView={5.2} className="mt-6" >
-            {info.combinedcredits.cast.length > 0 ? (
-              [...new Map(info.combinedcredits.cast.map(item => [item.id, item])).values()].map((item, index) =>
-                item.poster_path ? (
-                  <SwiperSlide key={index}>
-                    <Link to={`/${item.media_type}/details/${item.id}`} className="">
-                      <img
-                        className=" rounded-lg"
-                        src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                        alt=""
-                        loading="lazy"
-                      />
-                      <div className="flex items-center justify-between pt-5  gap-3">
-                        <span
-                          className={` ${
-                            item.vote_average < 5
-                              ? "bg-[#eeb90c89]"
-                              : "bg-[#0cee3989]"
-                          } w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5`}
+            <Swiper
+              spaceBetween={20}
+              breakpoints={{
+                1500: { slidesPerView: 5.2 },
+                1400: { slidesPerView: 4.8 },
+                1300: { slidesPerView: 4.4 },
+                1200: { slidesPerView: 4 },
+                1100: { slidesPerView: 3.6 },
+                1000: { slidesPerView: 3.2 },
+              }}
+              className="mt-6"
+            >
+              {info.combinedcredits.cast.length > 0
+                ? [
+                    ...new Map(
+                      info.combinedcredits.cast.map((item) => [item.id, item])
+                    ).values(),
+                  ].map((item, index) =>
+                    item.poster_path ? (
+                      <SwiperSlide key={index}>
+                        <Link
+                          to={`/${item.media_type}/details/${item.id}`}
+                          className=""
                         >
-                          <BiSolidStar />
-                          {(item.vote_average == 0 &&
-                            item.popularity.toFixed() / 10) ||
-                            item.vote_average.toFixed(1)}
-                        </span>
-                        <span className="bg-[#ffffff40] w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5">
-                          <BsCalendarDateFill />
-                          {item.first_air_date || item.release_date}
-                        </span>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                ) : null
-              )
-            ) : (
-              [...new Map(info.combinedcredits.crew.map(item => [item.id, item])).values()].map((item, index) =>
-                item.poster_path ? (
-                  <SwiperSlide key={index}>
-                    <Link to={`/${item.media_type}/details/${item.id}`} className="">
-                      <img
-                        className=" rounded-lg"
-                        src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                        alt=""
-                        loading="lazy"
-                      />
-                      <div className="flex items-center justify-between pt-5  gap-3">
-                        <span
-                          className={` ${
-                            item.vote_average < 5
-                              ? "bg-[#eeb90c89]"
-                              : "bg-[#0cee3989]"
-                          } w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5`}
+                          <img
+                            className=" rounded-lg"
+                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                            alt=""
+                            loading="lazy"
+                          />
+                          <div className="flex items-center justify-between pt-5  gap-3">
+                            <span
+                              className={` ${
+                                item.vote_average < 5
+                                  ? "bg-[#eeb90c89]"
+                                  : "bg-[#0cee3989]"
+                              } w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5`}
+                            >
+                              <BiSolidStar />
+                              {(item.vote_average == 0 &&
+                                item.popularity.toFixed() / 10) ||
+                                item.vote_average.toFixed(1)}
+                            </span>
+                            <span className="bg-[#ffffff40] w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5">
+                              <BsCalendarDateFill />
+                              {item.first_air_date || item.release_date}
+                            </span>
+                          </div>
+                        </Link>
+                      </SwiperSlide>
+                    ) : null
+                  )
+                : [
+                    ...new Map(
+                      info.combinedcredits.crew.map((item) => [item.id, item])
+                    ).values(),
+                  ].map((item, index) =>
+                    item.poster_path ? (
+                      <SwiperSlide key={index}>
+                        <Link
+                          to={`/${item.media_type}/details/${item.id}`}
+                          className=""
                         >
-                          <BiSolidStar />
-                          {(item.vote_average == 0 &&
-                            item.popularity.toFixed() / 10) ||
-                            item.vote_average.toFixed(1)}
-                        </span>
-                        <span className="bg-[#ffffff40] w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5">
-                          <BsCalendarDateFill />
-                          {item.first_air_date || item.release_date}
-                        </span>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                ) : null
-              )
-            )}
-          </Swiper>
-         </div>
+                          <img
+                            className=" rounded-lg"
+                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                            alt=""
+                            loading="lazy"
+                          />
+                          <div className="flex items-center justify-between pt-5  gap-3">
+                            <span
+                              className={` ${
+                                item.vote_average < 5
+                                  ? "bg-[#eeb90c89]"
+                                  : "bg-[#0cee3989]"
+                              } w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5`}
+                            >
+                              <BiSolidStar />
+                              {(item.vote_average == 0 &&
+                                item.popularity.toFixed() / 10) ||
+                                item.vote_average.toFixed(1)}
+                            </span>
+                            <span className="bg-[#ffffff40] w-fit flex gap-1 items-center px-1.5 rounded-md text-xs py-0.5">
+                              <BsCalendarDateFill />
+                              {item.first_air_date || item.release_date}
+                            </span>
+                          </div>
+                        </Link>
+                      </SwiperSlide>
+                    ) : null
+                  )}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

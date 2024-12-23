@@ -20,7 +20,6 @@ const HorizontalCards = React.memo(({ apiEndpoint, title, mediaType }) => {
     getLatestMovie();
   }, [getLatestMovie]);
 
-
   return (
     <div className="w-full text-white mb-8 h-[50vh]">
       <div className="flex items-center justify-between">
@@ -29,7 +28,14 @@ const HorizontalCards = React.memo(({ apiEndpoint, title, mediaType }) => {
 
       <Swiper
         spaceBetween={10}
-        slidesPerView={6.5}
+        breakpoints={{
+          1500: { slidesPerView: 6.4 },
+          1400: { slidesPerView: 5.9 },
+          1300: { slidesPerView: 5.5 },
+          1200: { slidesPerView: 5 },
+          1100: { slidesPerView: 4.6 },
+          1000: { slidesPerView: 4.2 },
+        }}
         scrollbar={{ draggable: true }}
       >
         {latestMovie.map((item, index) => (

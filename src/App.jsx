@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Trending from "./Pages/Trending";
@@ -11,6 +11,29 @@ import People from "./Pages/People";
 import PeopleDetail from "./Pages/PeopleDetail";
 
 const App = () => {
+  const [isLaptop, setIsLaptop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptop(window.innerWidth >= 1024);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  if (!isLaptop) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-[#0f1014] text-white">
+        <h1>Please open on a desktop device</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="h-screen w-screen flex font-[nudica] bg-[#0f1014]">
       <Routes>
