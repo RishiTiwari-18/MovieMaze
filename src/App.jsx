@@ -29,7 +29,7 @@ const App = () => {
   if (!isLaptop) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-[#0f1014] text-white">
-        <h1>Please open on a desktop device</h1>
+        <h1 className=" text-2xl">Please open on a desktop device</h1>
       </div>
     );
   }
