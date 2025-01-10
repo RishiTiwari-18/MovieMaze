@@ -11,6 +11,9 @@ import People from "./Pages/People";
 import PeopleDetail from "./Pages/PeopleDetail";
 
 const App = () => {
+  // Alert users to use a VPN if they can't see any data
+  alert("Please use a VPN if you can't see any data.");
+
   const [isLaptop, setIsLaptop] = useState(true);
 
   useEffect(() => {
@@ -35,7 +38,7 @@ const App = () => {
   }
 
   return (
-    <div className="h-screen w-screen flex font-[nudica] bg-[#0f1014]">
+    <div className={`h-screen w-screen flex ${"font-[nudica]" || "font-sans"} bg-[#0f1014]`}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending />} />
