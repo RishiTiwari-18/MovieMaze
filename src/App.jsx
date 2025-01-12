@@ -12,7 +12,7 @@ import PeopleDetail from "./Pages/PeopleDetail";
 
 const App = () => {
   // Alert users to use a VPN if they can't see any data
-  alert("Please use a VPN if you can't see any data.");
+  alert("Please use a VPN if you can't see any data because the API used to get the data is not available in India.");
 
   const [isLaptop, setIsLaptop] = useState(true);
 
